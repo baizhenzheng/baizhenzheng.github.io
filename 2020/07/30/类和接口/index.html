@@ -16,7 +16,7 @@
 <meta property="og:description" content="使类和成员的可访问性最小化区分一个组件设计的好与不好，唯一重要的因素在于，它对于外部的其他组件而言，是否隐藏了其内部数据和其他实现细节。这一概念被称为信息隐藏或者封装，信息隐藏之所以重要是因为：它可以有效地解除组成系统的各个组件之间的耦合关系，即解耦，使得这些组件可以独立地开发测试。规则也非常简单：尽可能使每个类或者成员不被外界访问。对于顶层的类和接口，只有两种访问级别：包私有和公有。如果你用pu">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-30T01:25:52.000Z">
-<meta property="article:modified_time" content="2020-07-31T02:46:55.801Z">
+<meta property="article:modified_time" content="2020-07-31T07:05:46.925Z">
 <meta property="article:author" content="欲上青天揽月">
 <meta name="twitter:card" content="summary">
   
@@ -326,8 +326,17 @@ private static class inner{
 
 }
 
-private class in{</code></pre><p>//        static void visit()//非静态成员不能包含静态方法<br>//        {<br>//            System.out.println(c);<br>//        }<br>        void hello_()<br>        {<br>            hello();<br>        }</p>
-<pre><code>}
+private class in{
+    static void visit()//非静态成员不能包含静态方法，编译不通过。
+    {
+        System.out.println(c);
+    }
+    void hello_()
+    {
+        hello();
+    }
+
+}
 
 public static void main(String[] args) {
     inner_Class_Test.inner inner = new inner();

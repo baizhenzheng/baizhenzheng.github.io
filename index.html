@@ -324,8 +324,17 @@ private static class inner{
 
 }
 
-private class in{</code></pre><p>//        static void visit()//非静态成员不能包含静态方法<br>//        {<br>//            System.out.println(c);<br>//        }<br>        void hello_()<br>        {<br>            hello();<br>        }</p>
-<pre><code>}
+private class in{
+    static void visit()//非静态成员不能包含静态方法，编译不通过。
+    {
+        System.out.println(c);
+    }
+    void hello_()
+    {
+        hello();
+    }
+
+}
 
 public static void main(String[] args) {
     inner_Class_Test.inner inner = new inner();
