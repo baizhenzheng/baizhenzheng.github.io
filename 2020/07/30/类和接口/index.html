@@ -16,7 +16,7 @@
 <meta property="og:description" content="使类和成员的可访问性最小化区分一个组件设计的好与不好，唯一重要的因素在于，它对于外部的其他组件而言，是否隐藏了其内部数据和其他实现细节。这一概念被称为信息隐藏或者封装，信息隐藏之所以重要是因为：它可以有效地解除组成系统的各个组件之间的耦合关系，即解耦，使得这些组件可以独立地开发测试。规则也非常简单：尽可能使每个类或者成员不被外界访问。对于顶层的类和接口，只有两种访问级别：包私有和公有。如果你用pu">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-30T01:25:52.000Z">
-<meta property="article:modified_time" content="2020-07-31T07:07:29.130Z">
+<meta property="article:modified_time" content="2020-07-31T07:08:36.245Z">
 <meta property="article:author" content="欲上青天揽月">
 <meta name="twitter:card" content="summary">
   
@@ -191,8 +191,8 @@ public static void main(String[] args) {
     System.out.println(p.start + &quot;时间 &quot; + p.end + &quot;描述&quot; + p.str);
     end.setYear(1);//仍旧可以修改
     System.out.println(p.start + &quot;时间 &quot; + p.end + &quot;描述&quot; + p.str);
-}</code></pre><p>}</p>
-<h4 id="注意：长度非零的数组总是可变的，所以让类具有公有的静态final数组域，或者返回这种域的访问方式，这是错误的。如果类具有这样的域或者访问方法，客户端将能够修改数组中的内容。这是安全漏洞的一个常见根源：public-static-final-final-Thing-VALUES-…-。修正方法有两种"><a href="#注意：长度非零的数组总是可变的，所以让类具有公有的静态final数组域，或者返回这种域的访问方式，这是错误的。如果类具有这样的域或者访问方法，客户端将能够修改数组中的内容。这是安全漏洞的一个常见根源：public-static-final-final-Thing-VALUES-…-。修正方法有两种" class="headerlink" title="注意：长度非零的数组总是可变的，所以让类具有公有的静态final数组域，或者返回这种域的访问方式，这是错误的。如果类具有这样的域或者访问方法，客户端将能够修改数组中的内容。这是安全漏洞的一个常见根源：public static final final Thing[] VALUES = {…}。修正方法有两种"></a>注意：长度非零的数组总是可变的，所以让类具有公有的静态final数组域，或者返回这种域的访问方式，这是错误的。如果类具有这样的域或者访问方法，客户端将能够修改数组中的内容。这是安全漏洞的一个常见根源：public static final final Thing[] VALUES = {…}。修正方法有两种</h4><h5 id="修正方法："><a href="#修正方法：" class="headerlink" title="修正方法："></a>修正方法：</h5><pre><code>private static final final Thing[] PRIVATE_VALUES = {...}
+}
+}</code></pre><h4 id="注意：长度非零的数组总是可变的，所以让类具有公有的静态final数组域，或者返回这种域的访问方式，这是错误的。如果类具有这样的域或者访问方法，客户端将能够修改数组中的内容。这是安全漏洞的一个常见根源：public-static-final-final-Thing-VALUES-…-。修正方法有两种"><a href="#注意：长度非零的数组总是可变的，所以让类具有公有的静态final数组域，或者返回这种域的访问方式，这是错误的。如果类具有这样的域或者访问方法，客户端将能够修改数组中的内容。这是安全漏洞的一个常见根源：public-static-final-final-Thing-VALUES-…-。修正方法有两种" class="headerlink" title="注意：长度非零的数组总是可变的，所以让类具有公有的静态final数组域，或者返回这种域的访问方式，这是错误的。如果类具有这样的域或者访问方法，客户端将能够修改数组中的内容。这是安全漏洞的一个常见根源：public static final final Thing[] VALUES = {…}。修正方法有两种"></a>注意：长度非零的数组总是可变的，所以让类具有公有的静态final数组域，或者返回这种域的访问方式，这是错误的。如果类具有这样的域或者访问方法，客户端将能够修改数组中的内容。这是安全漏洞的一个常见根源：public static final final Thing[] VALUES = {…}。修正方法有两种</h4><h5 id="修正方法："><a href="#修正方法：" class="headerlink" title="修正方法："></a>修正方法：</h5><pre><code>private static final final Thing[] PRIVATE_VALUES = {...}
 
 public static final List&lt;Thing&gt; VALUES = Collections.unmodifiableList(Arrays.asList(PRIVATE_VALUES))
 

@@ -189,8 +189,8 @@ public static void main(String[] args) {
     System.out.println(p.start + &quot;时间 &quot; + p.end + &quot;描述&quot; + p.str);
     end.setYear(1);//仍旧可以修改
     System.out.println(p.start + &quot;时间 &quot; + p.end + &quot;描述&quot; + p.str);
-}</code></pre><p>}</p>
-<h4 id="注意：长度非零的数组总是可变的，所以让类具有公有的静态final数组域，或者返回这种域的访问方式，这是错误的。如果类具有这样的域或者访问方法，客户端将能够修改数组中的内容。这是安全漏洞的一个常见根源：public-static-final-final-Thing-VALUES-…-。修正方法有两种"><a href="#注意：长度非零的数组总是可变的，所以让类具有公有的静态final数组域，或者返回这种域的访问方式，这是错误的。如果类具有这样的域或者访问方法，客户端将能够修改数组中的内容。这是安全漏洞的一个常见根源：public-static-final-final-Thing-VALUES-…-。修正方法有两种" class="headerlink" title="注意：长度非零的数组总是可变的，所以让类具有公有的静态final数组域，或者返回这种域的访问方式，这是错误的。如果类具有这样的域或者访问方法，客户端将能够修改数组中的内容。这是安全漏洞的一个常见根源：public static final final Thing[] VALUES = {…}。修正方法有两种"></a>注意：长度非零的数组总是可变的，所以让类具有公有的静态final数组域，或者返回这种域的访问方式，这是错误的。如果类具有这样的域或者访问方法，客户端将能够修改数组中的内容。这是安全漏洞的一个常见根源：public static final final Thing[] VALUES = {…}。修正方法有两种</h4><h5 id="修正方法："><a href="#修正方法：" class="headerlink" title="修正方法："></a>修正方法：</h5><pre><code>private static final final Thing[] PRIVATE_VALUES = {...}
+}
+}</code></pre><h4 id="注意：长度非零的数组总是可变的，所以让类具有公有的静态final数组域，或者返回这种域的访问方式，这是错误的。如果类具有这样的域或者访问方法，客户端将能够修改数组中的内容。这是安全漏洞的一个常见根源：public-static-final-final-Thing-VALUES-…-。修正方法有两种"><a href="#注意：长度非零的数组总是可变的，所以让类具有公有的静态final数组域，或者返回这种域的访问方式，这是错误的。如果类具有这样的域或者访问方法，客户端将能够修改数组中的内容。这是安全漏洞的一个常见根源：public-static-final-final-Thing-VALUES-…-。修正方法有两种" class="headerlink" title="注意：长度非零的数组总是可变的，所以让类具有公有的静态final数组域，或者返回这种域的访问方式，这是错误的。如果类具有这样的域或者访问方法，客户端将能够修改数组中的内容。这是安全漏洞的一个常见根源：public static final final Thing[] VALUES = {…}。修正方法有两种"></a>注意：长度非零的数组总是可变的，所以让类具有公有的静态final数组域，或者返回这种域的访问方式，这是错误的。如果类具有这样的域或者访问方法，客户端将能够修改数组中的内容。这是安全漏洞的一个常见根源：public static final final Thing[] VALUES = {…}。修正方法有两种</h4><h5 id="修正方法："><a href="#修正方法：" class="headerlink" title="修正方法："></a>修正方法：</h5><pre><code>private static final final Thing[] PRIVATE_VALUES = {...}
 
 public static final List&lt;Thing&gt; VALUES = Collections.unmodifiableList(Arrays.asList(PRIVATE_VALUES))
 
